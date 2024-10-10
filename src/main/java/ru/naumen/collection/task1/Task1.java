@@ -1,5 +1,10 @@
 package ru.naumen.collection.task1;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Дано:
  * <pre>
@@ -40,6 +45,11 @@ public class Task1
     }
 
     /**
+     * Я выбрал HashMap, т.к. получение по ключу имеет сложность О(1)
+     */
+    private Map<Ticket, Goods> orders = new HashMap<>();
+
+    /**
      * Получить товары по билету
      * <p>Сложность алгоритма O(1)</p>
      *
@@ -47,7 +57,11 @@ public class Task1
      * <p>Достаточно их определить только для id, т.к. он уникален</p>
      */
     public Goods getGoods(Ticket ticket) {
-        // TODO реализовать
+        if (orders.containsKey(ticket)) {
+            var goods = orders.get(ticket);
+            orders.remove(ticket);
+            return goods;
+        }
         return null;
     }
 }
