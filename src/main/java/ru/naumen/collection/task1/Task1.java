@@ -46,6 +46,9 @@ public class Task1
 
     /**
      * Я выбрал HashMap, т.к. получение по ключу имеет сложность О(1)
+     * Equals и hashcode переопределены, поэтому получение по ключу будет О(1)
+     *
+     * Общая сложность О(1)
      */
     private Map<Ticket, Goods> orders = new HashMap<>();
 
@@ -57,11 +60,6 @@ public class Task1
      * <p>Достаточно их определить только для id, т.к. он уникален</p>
      */
     public Goods getGoods(Ticket ticket) {
-        if (orders.containsKey(ticket)) {
-            var goods = orders.get(ticket);
-            orders.remove(ticket);
-            return goods;
-        }
-        return null;
+        return orders.get(ticket);
     }
 }
